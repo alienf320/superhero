@@ -1,0 +1,25 @@
+<form [formGroup]="heroForm" (ngSubmit)="onSubmit()" class="hero-form">
+  <div class="form-group">
+    <label>Nombre:</label>
+    <input type="text" formControlName="name" uppercase>
+    @let nameError = getErrorMessage('name');
+    @if (nameError) {
+      <span class="error">{{ nameError }}</span>
+    }
+  </div>
+
+  <div class="form-group">
+    <label>Poder:</label>
+    <input type="text" formControlName="power">
+  </div>
+
+  <div class="form-group">
+    <label>Universe:</label>
+    <input type="text" formControlName="universe">
+  </div>
+
+  <div class="actions">
+    <button type="submit" [disabled]="heroForm.invalid">Guardar</button>
+    <button (click)="cancel()">Cancelar</button>
+  </div>
+</form>

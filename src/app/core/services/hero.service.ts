@@ -23,7 +23,7 @@ export class HeroService {
   }
 
   getHeroById(id: number) {
-    return computed(() => this.heroes().find(h => h.id === id));
+    return this.heroes().find(h => h.id === id);
   }
 
   addHero(hero: Hero) {
