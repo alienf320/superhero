@@ -1,0 +1,20 @@
+.filter {
+  margin: 20px 0;
+}
+
+input {
+  padding: 5px;
+  width: 200px;
+}
+
+button {
+  padding: 10px;
+  background-color: rgb(1, 31, 116);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(67, 24, 185);
+}
