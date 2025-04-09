@@ -4,5 +4,6 @@ import { HeroFormComponent } from './components/layout/hero-form/hero-form.compo
 
 export const routes: Routes = [
   {path: '', component: HeroListComponent},
-  {path: 'add', component: HeroFormComponent}
+  {path: 'add', component: HeroFormComponent},
+  { path: 'edit/:heroId', loadComponent: () => import('./components/layout/hero-form/hero-form.component').then(m => m.HeroFormComponent) },
 ];

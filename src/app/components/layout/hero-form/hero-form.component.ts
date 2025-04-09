@@ -18,10 +18,9 @@ export class HeroFormComponent {
   fb = inject(FormBuilder);
   heroService = inject(HeroService);
   router = inject(Router);
-  //route
 
-  heroId = input<number | null>(null);
-  hero = computed(() => this.heroService.getHeroById(this.heroId() ?? 0));
+  heroId = input<string | null>(null);
+  hero = computed(() => this.heroService.getHeroById(Number(this.heroId()) ?? 0));
 
   heroForm = this.fb.group({
     id: [null],
@@ -31,8 +30,10 @@ export class HeroFormComponent {
   });
 
   ngOnInit(): void {
+    console.log('hero()', this.hero(), this.heroId())
     const hero = this.hero();
     if (hero) {
+      console.log('entro: ', hero)
       this.heroForm.patchValue({
         name: hero.name,
         power: hero.power,

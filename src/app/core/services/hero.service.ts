@@ -1,12 +1,10 @@
 import { Injectable, signal, computed } from '@angular/core';
 import { Hero } from '../../shared/models/hero.model';
+import { HEROES } from '../../shared/data/heroes.data';
 
 @Injectable({ providedIn: 'root' })
 export class HeroService {
-  private heroes = signal<Hero[]>([
-    { id: 1, name: 'Spiderman', power: 'Web-slinging', universe: 'Marvel' },
-    { id: 2, name: 'Superman', power: 'Flight', universe: 'DC' },
-  ]);
+  private heroes = signal<Hero[]>(HEROES);
 
   allHeroes = computed(() => this.heroes());
   filteredHeroes = computed(() => {
