@@ -1,21 +1,35 @@
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 20px 0;
-}
-th, td {
-  padding: 10px;
-  border: 1px solid #ccc;
-  text-align: left;
-}
-th {
-  background-color: #f4f4f4;
-}
-.fit-column {
-  width: 150px;
+:host {
   display: flex;
   justify-content: center;
 }
+
+table {
+  border-collapse: collapse;
+  margin: 20px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+}
+
+th, td {
+  min-width: 300px;
+  padding: 10px 40px;
+  border: 1px solid #ccc;
+  text-align: left;
+  background-color: var(--color-surface);
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+.fit-column {
+  padding: 10px;
+  min-width: 50px;
+  max-width: 150px;
+  display: flex;
+  justify-content: center;
+}
+
 button {
   margin-right: 5px;
   padding: 5px 10px;
