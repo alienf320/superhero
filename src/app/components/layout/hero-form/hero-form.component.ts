@@ -7,10 +7,11 @@ import {
 } from '@angular/forms';
 import { HeroService } from '../../../core/services/hero.service';
 import { Router } from '@angular/router';
+import { UppercaseDirective } from '../../../shared/directives/uppercase.directive';
 
 @Component({
   selector: 'app-hero-form',
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, UppercaseDirective],
   templateUrl: './hero-form.component.html',
   styleUrl: './hero-form.component.scss',
 })

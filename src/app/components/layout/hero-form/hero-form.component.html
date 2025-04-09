@@ -1,7 +1,7 @@
 <form [formGroup]="heroForm" (ngSubmit)="onSubmit()" class="hero-form">
   <div class="form-group">
     <label>Nombre:</label>
-    <input type="text" formControlName="name" uppercase>
+    <input type="text" formControlName="name" appUppercase>
     @let nameError = getErrorMessage('name');
     @if (nameError) {
       <span class="error">{{ nameError }}</span>
