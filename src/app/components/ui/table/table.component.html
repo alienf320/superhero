@@ -2,16 +2,16 @@
   <thead>
     <tr>
       <th>Nombre</th>
-      <th>Acciones</th>
+      <th class="fit-column">Acciones</th>
     </tr>
   </thead>
   <tbody>
     @for (hero of heroes(); track hero.id) {
       <tr>
         <td>{{ hero.name }}</td>
-        <td>
-          <button (click)="edit.emit(hero.id)">Editar</button>
-          <button (click)="delete.emit(hero.id)">Borrar</button>
+        <td class="fit-column">
+          <button (click)="edit.emit(hero.id)"><fa-icon [icon]="faPenToSquare"></fa-icon></button>
+          <button (click)="delete.emit(hero.id)"><fa-icon [icon]="faTrash"></fa-icon></button>
         </td>
       </tr>
     }

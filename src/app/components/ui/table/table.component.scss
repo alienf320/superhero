@@ -11,6 +11,11 @@ th, td {
 th {
   background-color: #f4f4f4;
 }
+.fit-column {
+  width: 150px;
+  display: flex;
+  justify-content: center;
+}
 button {
   margin-right: 5px;
   padding: 5px 10px;
