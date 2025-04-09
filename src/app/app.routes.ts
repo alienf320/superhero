@@ -7,8 +7,8 @@ export const routes: Routes = [
   {
     path: 'add',
     loadComponent: () =>
-      import('./components/layout/hero-list/hero-list.component').then(
-        (m) => m.HeroListComponent
+      import('./components/layout/hero-form/hero-form.component').then(
+        (m) => m.HeroFormComponent
       ),
   },
   {
