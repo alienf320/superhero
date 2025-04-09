@@ -1,10 +1,43 @@
-.filter {
-  margin: 20px 0;
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-input {
-  padding: 5px;
-  width: 200px;
+.filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1rem 0;
+  font-family: 'Roboto', sans-serif;
+  padding: 20px;
+  background-color: var(--color-tertiary);
+  min-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  label {
+    font-weight: 500;
+    color: white;
+    font-size: 1.1rem;
+  }
+
+  input {
+    padding: 0.6rem 0.9rem;
+    font-size: 1rem;
+    background-color: var(--color-surface);
+    border-radius: 0.5rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    width: 80%;
+
+    &:focus {
+      outline: none;
+      border-color: #4f46e5; // Indigo
+      box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+    }
+  }
 }
 
 button {
