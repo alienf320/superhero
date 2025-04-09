@@ -1,6 +1,9 @@
 <nav class="navbar">
   <h1>{{ sectionTitle() }}</h1>
   @if (showAddButton()) {
-    <button (click)="addHero()">Añadir Héroe</button>
+    <div class="controls">
+      <button (click)="addHero()">Añadir Héroe</button>
+      <button (click)="simulateLoad()">Simular Carga</button>
+    </div>
   }
 </nav>

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, computed, inject, output, signal } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
@@ -10,6 +11,7 @@ import { filter } from 'rxjs';
 })
 export class NavbarComponent {
   private router = inject(Router)
+  private http = inject(HttpClient);
   private currentUrl = signal<string>('');
 
   sectionTitle = computed(() => {
@@ -35,5 +37,13 @@ export class NavbarComponent {
 
   addHero() {
     this.router.navigate(['/add'])
+  }
+
+  simulateLoad() {
+    // Simular una petición HTTP a un endpoint de prueba (JSONPlaceholder)
+    this.http.get('https://jsonplaceholder.typicode.com/todos/1').subscribe({
+      next: (response) => console.log('Simulated HTTP response:', response),
+      error: (err) => console.error('Simulated HTTP error:', err),
+    });
   }
 }
