@@ -57,7 +57,8 @@ describe('HeroService', () => {
 
   it('should update an existing hero', () => {
     const updatedHero: Hero = { id: 1, name: 'Superman Updated', power: 'Todo', universe: 'DC' };
-    service.updateHero(updatedHero);
+    const heroId = '1'
+    service.updateHero(heroId, updatedHero);
 
     const hero = service.getHeroById(1);
     expect(hero?.name).toBe('Superman Updated');
@@ -67,8 +68,9 @@ describe('HeroService', () => {
   it('should not change heroes if updated hero does not exist', () => {
     const original = [...service.allHeroes()];
     const updated: Hero = { id: 99, name: 'Fake', power: 'Nada', universe: 'Marvel' };
+    const heroId = '99'
 
-    service.updateHero(updated);
+    service.updateHero(heroId, updated);
 
     expect(service.allHeroes()).toEqual(original);
   });
