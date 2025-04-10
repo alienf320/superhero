@@ -7,7 +7,7 @@
   font-family: 'Roboto', sans-serif;
 
   button {
-    background-color: #4f46e5; // Indigo-600
+    background-color: var(--color-secondary);
     color: white;
     border: none;
     padding: 0.5rem 1rem;
@@ -17,7 +17,13 @@
     transition: background-color 0.3s ease;
 
     &:hover:not(:disabled) {
-      background-color: #4338ca; // Indigo-700
+      background-color: var(--color-tertiary);
+    }
+
+    &.active {
+      background-color: #3b82f6;
+      color: white;
+      font-weight: bold;
     }
 
     &:disabled {

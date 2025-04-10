@@ -1,7 +1,15 @@
+@if (total() > pageSize()) {
 <div class="paginator">
-  @if (total() > pageSize()) {
-    <button (click)="previous()" [disabled]="pageIndex() === 0">Anterior</button>
-    <span>Página {{ pageIndex() + 1 }} de {{ totalPages() }}</span>
-    <button (click)="next()" [disabled]="pageIndex() === totalPages() - 1">Siguiente</button>
+  <button (click)="firstPage()" [disabled]="pageIndex() === 0">&lt;&lt;</button>
+
+  @for (page of getPageRange(); track $index) {
+  <button (click)="setPage(page)" [class.active]="page === pageIndex()">
+    {{ page + 1 }}
+  </button>
   }
+
+  <button (click)="lastPage()" [disabled]="pageIndex() === totalPages() - 1">
+    &gt;&gt;
+  </button>
 </div>
+}
