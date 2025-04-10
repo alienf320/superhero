@@ -10,7 +10,7 @@ export class HeroService {
   filteredHeroes = computed(() => {
     const filter = this.filter().toLowerCase();
     return filter
-      ? this.heroes().filter(h => h.name.toLowerCase().includes(filter))
+      ? this.heroes().filter((h) => h.name.toLowerCase().includes(filter))
       : this.heroes();
   });
 
@@ -21,21 +21,23 @@ export class HeroService {
   }
 
   getHeroById(id: number) {
-    return this.heroes().find(h => h.id === id);
+    return this.heroes().find((h) => h.id === id);
   }
 
   addHero(hero: Hero) {
-    const newId = Math.max(...this.heroes().map(h => h.id), 0) + 1;
-    this.heroes.update(current => [...current, { ...hero, id: newId }]);
+    const newId = Math.max(...this.heroes().map((h) => h.id), 0) + 1;
+    this.heroes.update((current) => [...current, { ...hero, id: newId }]);
   }
 
-  updateHero(updatedHero: Hero) {
-    this.heroes.update(current =>
-      current.map(h => (h.id === updatedHero.id ? updatedHero : h))
+  updateHero(heroId: string, updatedHero: Hero) {
+    this.heroes.update((current) =>
+      current.map((h) =>
+        h.id === +heroId ? { ...updatedHero, id: +heroId } : h
+      )
     );
   }
 
   deleteHero(id: number) {
-    this.heroes.update(current => current.filter(h => h.id !== id));
+    this.heroes.update((current) => current.filter((h) => h.id !== id));
   }
 }

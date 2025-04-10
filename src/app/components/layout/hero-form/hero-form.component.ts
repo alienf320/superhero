@@ -8,6 +8,7 @@ import {
 import { HeroService } from '../../../core/services/hero.service';
 import { Router } from '@angular/router';
 import { UppercaseDirective } from '../../../shared/directives/uppercase.directive';
+import { NotificationService } from '../../../core/services/notification.service';
 
 @Component({
   selector: 'app-hero-form',
@@ -19,6 +20,7 @@ export class HeroFormComponent {
   fb = inject(FormBuilder);
   heroService = inject(HeroService);
   router = inject(Router);
+  notificationService = inject(NotificationService);
 
   heroId = input<string | null>(null);
   hero = computed(() => this.heroService.getHeroById(Number(this.heroId()) ?? 0));
@@ -31,10 +33,8 @@ export class HeroFormComponent {
   });
 
   ngOnInit(): void {
-    console.log('hero()', this.hero(), this.heroId())
     const hero = this.hero();
     if (hero) {
-      console.log('entro: ', hero)
       this.heroForm.patchValue({
         name: hero.name,
         power: hero.power,
@@ -45,10 +45,12 @@ export class HeroFormComponent {
 
   onSubmit() {
     const hero = this.heroForm.value as any;
-    if (hero.id) {
-      this.heroService.updateHero(hero);
+    if (this.heroId()) {
+      this.heroService.updateHero(this.heroId()!, hero);
+      this.notificationService.show(`Se actualizó el héroe ${hero.name}`, 'success')
     } else {
       this.heroService.addHero(hero);
+      this.notificationService.show(`Se añadió el héroe ${hero.name}`, 'success')
     }
 
     this.router.navigate(['/']);

@@ -1,4 +1,11 @@
-import { Hero } from "../models/hero.model";
+// heroes.ts
+
+export interface Hero {
+  id: number;
+  name: string;
+  power?: string;
+  universe?: string;
+}
 
 export const HEROES: Hero[] = [
   { id: 1, name: 'Superman', power: 'Super strength', universe: 'DC' },

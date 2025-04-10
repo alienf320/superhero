@@ -2,13 +2,15 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/ui/navbar/navbar.component';
 import { LoadingComponent } from './components/ui/loading/loading.component';
+import { NotificationComponent } from "./components/ui/notification/notification.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent, LoadingComponent, LoadingComponent],
+  imports: [RouterOutlet, NavbarComponent, LoadingComponent, LoadingComponent, NotificationComponent],
   template: `
     <app-navbar></app-navbar>
     <app-loading></app-loading>
+    <app-notification></app-notification>
     <router-outlet></router-outlet>
   `,
   styleUrl: './app.component.scss',
