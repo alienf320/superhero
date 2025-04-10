@@ -4,7 +4,7 @@ Prueba técnica con Angular 19 y standalone components.
 
 ## Instalación local
 
-1. Clonar el repositorio: `git clone <url>`
+1. Clonar el repositorio: `git clone git https://github.com/alienf320/superhero.git`
 2. Instalar dependencias: `npm install`
 3. Ejecutar: `ng serve`
 
