@@ -1,4 +1,10 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
 import { HeroService } from '../../../core/services/hero.service';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -21,6 +27,7 @@ import { PaginatorComponent } from '../../ui/paginator/paginator.component';
 export class HeroListComponent {
   heroService = inject(HeroService);
   router = inject(Router);
+  cdr = inject(ChangeDetectorRef);
   pageSize = 5;
   pageIndex = signal(0);
   filter = signal('');
@@ -33,20 +40,23 @@ export class HeroListComponent {
   updateFilter(term: string) {
     this.filter.set(term);
     this.heroService.setFilter(term);
-    this.pageIndex.set(0)
+    this.pageIndex.set(0);
   }
 
   navigateToEdit(id: number) {
-    this.router.navigate(['/edit', id])
+    this.router.navigate(['/edit', id]);
   }
 
   navigateToAdd() {
-    this.router.navigate(['/add'])
+    this.router.navigate(['/add']);
   }
 
   deleteHero(id: number) {
-    if(confirm('¿Seguro que quieres eliminar este héroe')) {
-      this.heroService.deleteHero(id);
+    if (confirm('¿Seguro que quieres eliminar este héroe')) {
+      document.startViewTransition(() => {
+        this.heroService.deleteHero(id);
+        this.cdr.detectChanges();
+      });
     }
   }
 }

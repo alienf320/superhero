@@ -40,7 +40,6 @@ export class NavbarComponent {
   }
 
   simulateLoad() {
-    // Simular una petición HTTP a un endpoint de prueba (JSONPlaceholder)
     this.http.get('https://jsonplaceholder.typicode.com/todos/1').subscribe({
       next: (response) => console.log('Simulated HTTP response:', response),
       error: (err) => console.error('Simulated HTTP error:', err),
